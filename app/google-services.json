@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "255232021059",
+    "firebase_url": "https://after-sale-pindad-admin.firebaseio.com",
+    "project_id": "after-sale-pindad-admin",
+    "storage_bucket": "after-sale-pindad-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255232021059:android:68015b58cee6d9a6",
+        "android_client_info": {
+          "package_name": "org.pindad.aftersalepindadadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255232021059-66rks26ggqfi1jdrf2v2vk4atv4q5le2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.pindad.aftersalepindadadmin",
+            "certificate_hash": "7f4cf971a8e71d842182864474884b40c3603b0d"
+          }
+        },
+        {
+          "client_id": "255232021059-ientlpavdca93lpe5mmj0067tpkg7rvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDEFZzw6UMr5HWJNmgorcnkkKD0hleZe0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255232021059-ientlpavdca93lpe5mmj0067tpkg7rvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
