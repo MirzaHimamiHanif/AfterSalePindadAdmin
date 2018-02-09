@@ -5,20 +5,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.pindad.aftersalepindadadmin.Fragment.LoginFragment;
+
+import static android.view.View.GONE;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView txtRegId, txtMessage;
+    public FragmentManager fragmentManager;
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         txtRegId = (TextView) findViewById(R.id.txt_reg_id);
         txtMessage = (TextView) findViewById(R.id.txt_push_message);
+        fragmentManager = getSupportFragmentManager();
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -49,6 +60,46 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try{
+            if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
+            {
+                // call Login Activity
+            }
+            signIn();
+        }catch (NullPointerException e){
+            LoginFragment loginFragment = new LoginFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.loginContainer, loginFragment)
+                    .commit();
+        }// Check if user is signed in (non-null) and update UI accordingly.
+    }
+
+
+    public void signIn() {
+        FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
+        loginContainer.setVisibility(GONE);
+        toolbar.setVisibility(View.GONE);
+//        CatalogueFragment catalogueFragment = new CatalogueFragment();
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.catalogueContainer, catalogueFragment)
+//                .commit();
+    }
+
+    private void updateUI() {
+        if (true) {
+            FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
+            loginContainer.setVisibility(GONE);
+        }else{
+            LoginFragment loginFragment = new LoginFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.loginContainer, loginFragment)
+                    .commit();
+        }
     }
 
     @Override
