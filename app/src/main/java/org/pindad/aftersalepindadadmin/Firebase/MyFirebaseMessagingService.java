@@ -1,4 +1,4 @@
-package org.pindad.aftersalepindadadmin;
+package org.pindad.aftersalepindadadmin.Firebase;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.pindad.aftersalepindadadmin.Config;
+import org.pindad.aftersalepindadadmin.MainActivity;
+import org.pindad.aftersalepindadadmin.NotificationUtils;
 
 /**
  * Created by ASUS on 31/01/2018.

@@ -1,4 +1,4 @@
-package org.pindad.aftersalepindadadmin;
+package org.pindad.aftersalepindadadmin.Firebase;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+
+import org.pindad.aftersalepindadadmin.Config;
 
 /**
  * Created by ASUS on 31/01/2018.

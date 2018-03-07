@@ -1,6 +1,7 @@
 package org.pindad.aftersalepindadadmin.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.net.Uri;
@@ -27,6 +28,7 @@ import org.pindad.aftersalepindadadmin.Model.Message;
 import org.pindad.aftersalepindadadmin.R;
 import org.pindad.aftersalepindadadmin.RestAPI.ApiClient;
 import org.pindad.aftersalepindadadmin.RestAPI.ApiInterface;
+import org.pindad.aftersalepindadadmin.ViewEmailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -188,7 +190,9 @@ public class InboxFragment extends Fragment implements SwipeRefreshLayout.OnRefr
             messages.set(position, message);
             mAdapter.notifyDataSetChanged();
 
-            Toast.makeText(getContext(), "Read: " + message.getMessage(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Read: " + message.getMessage(), Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity(), ViewEmailActivity.class);
+            startActivity(i);
         }
     }
 
