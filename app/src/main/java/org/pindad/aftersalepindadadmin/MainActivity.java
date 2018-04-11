@@ -53,55 +53,54 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
-
+        FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
         fragmentManager = getSupportFragmentManager();
-//        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//
-//                // checking for type intent filter
-//                if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {
-//                    // gcm successfully registered
-//                    // now subscribe to `global` topic to receive app wide notifications
-//                    FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
-//
-//                } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
-//                    // new push notification is received
-//
-//                    String message = intent.getStringExtra("message");
-//
-//                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
-//
-//                    txtMessage.setText(message);
-//                }
-//            }
-//        };
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                // checking for type intent filter
+                if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {
+                    // gcm successfully registered
+                    // now subscribe to `global` topic to receive app wide notifications
+
+                } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
+                    // new push notification is received
+
+                    String message = intent.getStringExtra("message");
+
+                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+
+                    txtMessage.setText(message);
+                }
+            }
+        };
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        try{
-            if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
-            {
-                // call Login Activity
-            }
-            signIn();
-        }catch (NullPointerException e){
-            LoginFragment loginFragment = new LoginFragment();
-            fragmentManager.beginTransaction()
-                    .add(R.id.loginContainer, loginFragment)
-                    .commit();
-        }// Check if user is signed in (non-null) and update UI accordingly.
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        try{
+//            if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
+//            {
+//                // call Login Activity
+//            }
+//            signIn();
+//        }catch (NullPointerException e){
+//            LoginFragment loginFragment = new LoginFragment();
+//            fragmentManager.beginTransaction()
+//                    .add(R.id.loginContainer, loginFragment)
+//                    .commit();
+//        }// Check if user is signed in (non-null) and update UI accordingly.
+//    }
 
 
     public void signIn() {
 //        FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
 //        loginContainer.setVisibility(GONE);
 //        toolbar.setVisibility(View.GONE);
-        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
+//        startActivity(intent);
 //        CatalogueFragment catalogueFragment = new CatalogueFragment();
 //        fragmentManager.beginTransaction()
 //                .replace(R.id.catalogueContainer, catalogueFragment)
@@ -112,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
         if (true) {
 //            FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
 //            loginContainer.setVisibility(GONE);
-            Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
+//            startActivity(intent);
         }else{
             LoginFragment loginFragment = new LoginFragment();
             fragmentManager.beginTransaction()
@@ -126,17 +125,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // register GCM registration complete receiver
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-//                new IntentFilter(Config.REGISTRATION_COMPLETE));
+//         register GCM registration complete receiver
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(Config.REGISTRATION_COMPLETE));
 
-        // register new push message receiver
-        // by doing this, the activity will be notified each time a new message arrives
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-//                new IntentFilter(Config.PUSH_NOTIFICATION));
+//         register new push message receiver
+//         by doing this, the activity will be notified each time a new message arrives
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(Config.PUSH_NOTIFICATION));
 
-        // clear the notification area when the app is opened
-//        NotificationUtils.clearNotifications(getApplicationContext());
+//         clear the notification area when the app is opened
+        NotificationUtils.clearNotifications(getApplicationContext());
     }
 
     @Override
