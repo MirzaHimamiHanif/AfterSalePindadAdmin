@@ -1,11 +1,14 @@
 package org.pindad.aftersalepindadadmin.Firebase;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -23,6 +26,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
 
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
     private NotificationUtils notificationUtils;
 
     @Override
@@ -49,6 +53,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Log.e(TAG, "Exception: " + e.getMessage());
             }
         }
+        FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
     }
 
     private void handleNotification(String message) {
