@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
+        loginContainer.setVisibility(GONE);
+        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
+        startActivity(intent);
+
 //        txtRegId = (TextView) findViewById(R.id.txt_reg_id);
 //        txtMessage = (TextView) findViewById(R.id.txt_push_message);
 //        Button btnNext = (Button) findViewById(R.id.BtnNext);
@@ -87,10 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
         if (true) {
-//            FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
-//            loginContainer.setVisibility(GONE);
-//            Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
-//            startActivity(intent);
+            FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
+            loginContainer.setVisibility(GONE);
+            Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
+            startActivity(intent);
         }else{
             LoginFragment loginFragment = new LoginFragment();
             fragmentManager.beginTransaction()

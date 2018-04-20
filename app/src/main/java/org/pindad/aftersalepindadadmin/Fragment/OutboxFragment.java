@@ -105,10 +105,14 @@ public class OutboxFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
                 // TODO - avoid looping
                 // the loop was performed to add colors to each message
-                for (Message message : response.body()) {
-                    // generate a random color
-                    message.setColor(getRandomMaterialColor("400"));
-                    messages.add(message);
+                try {
+                    for (Message message : response.body()) {
+                        // generate a random color
+                        message.setColor(getRandomMaterialColor("400"));
+                        messages.add(message);
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
                 mAdapter.notifyDataSetChanged();
