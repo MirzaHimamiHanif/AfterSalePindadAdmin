@@ -5,17 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="org.pindad.aftersalepindadadmin.ViewEmailActivity">
-
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:background="?attr/colorPrimary"-->
-        <!--app:layout_scrollFlags="scroll|enterAlways"-->
-        <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
-        <!--app:title="@string/title_activity_list_email">-->
-    <!--</android.support.v7.widget.Toolbar>-->
+    tools:context="org.pindad.aftersalepindadadmin.ReplayEmailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,4 +103,5 @@
                 android:paddingTop="16dp"/>
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

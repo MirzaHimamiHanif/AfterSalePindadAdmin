@@ -43,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
-        loginContainer.setVisibility(GONE);
-        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
-        startActivity(intent);
+//        FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
+//        loginContainer.setVisibility(GONE);
+//        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
+//        startActivity(intent);
+
+        fragmentManager = getSupportFragmentManager();
 
 //        txtRegId = (TextView) findViewById(R.id.txt_reg_id);
 //        txtMessage = (TextView) findViewById(R.id.txt_push_message);
@@ -60,30 +62,30 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        try{
-//            if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
-//            {
-//                // call Login Activity
-//            }
-//            signIn();
-//        }catch (NullPointerException e){
-//            LoginFragment loginFragment = new LoginFragment();
-//            fragmentManager.beginTransaction()
-//                    .add(R.id.loginContainer, loginFragment)
-//                    .commit();
-//        }// Check if user is signed in (non-null) and update UI accordingly.
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        try{
+            if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
+            {
+                // call Login Activity
+            }
+            signIn();
+        }catch (NullPointerException e){
+            LoginFragment loginFragment = new LoginFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.loginContainer, loginFragment)
+                    .commit();
+        }// Check if user is signed in (non-null) and update UI accordingly.
+    }
 
 
     public void signIn() {
 //        FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
 //        loginContainer.setVisibility(GONE);
 //        toolbar.setVisibility(View.GONE);
-//        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this,EmailListActivity.class);
+        startActivity(intent);
 //        CatalogueFragment catalogueFragment = new CatalogueFragment();
 //        fragmentManager.beginTransaction()
 //                .replace(R.id.catalogueContainer, catalogueFragment)

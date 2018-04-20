@@ -15,6 +15,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.pindad.aftersalepindadadmin.Config;
+import org.pindad.aftersalepindadadmin.EmailListActivity;
 import org.pindad.aftersalepindadadmin.MainActivity;
 import org.pindad.aftersalepindadadmin.NotificationUtils;
 
@@ -103,7 +104,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notificationUtils.playNotificationSound();
             } else {
                 // app is in background, show the notification in notification tray
-                Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent resultIntent = new Intent(getApplicationContext(), EmailListActivity.class);
                 resultIntent.putExtra("message", message);
 
                 // check for image attachment
@@ -129,7 +130,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         notificationUtils.showNotificationMessage(title, message, timeStamp, intent);
     }
-
     /**
      * Showing notification with text and image
      */

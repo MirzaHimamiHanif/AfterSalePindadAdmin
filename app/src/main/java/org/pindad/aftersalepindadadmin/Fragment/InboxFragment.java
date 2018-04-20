@@ -47,7 +47,7 @@ public class InboxFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     private MessagesAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private EmailListActivity.ActionModeCallback actionModeCallback;
-//    private ActionModeCallback actionModeCallback = new ActionModeCallback();
+    //    private ActionModeCallback actionModeCallback = new ActionModeCallback();
     private ActionMode actionMode;
 
     public InboxFragment() {
