@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment {
 
     ApiInterface mApiInterface;
     private EditText username, password;
+    private ImageView logo;
     List<Users> KontakList;
 
     public LoginFragment() {
@@ -38,7 +40,8 @@ public class LoginFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
-        final TextView textView = (TextView) rootView.findViewById(R.id.title_text);
+//        final TextView textView = (TextView) rootView.findViewById(R.id.title_text);
+//        logo =  (ImageView) rootView.findViewById(R.id.pindadlogo);
         username = (EditText) rootView.findViewById(R.id.username);
         password = (EditText) rootView.findViewById(R.id.password);
         Button login = (Button) rootView.findViewById(R.id.login);
