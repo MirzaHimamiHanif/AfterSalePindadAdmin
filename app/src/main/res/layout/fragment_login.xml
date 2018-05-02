@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Login"
+                android:text="Login Admin"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 

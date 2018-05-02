@@ -109,24 +109,24 @@ public class EmailListActivity extends AppCompatActivity implements SwipeRefresh
             }
         });
 
-//        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//
-//                // checking for type intent filter
-//                if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {
-//                    // gcm successfully registered
-//                    // now subscribe to `global` topic to receive app wide notifications
-//                    FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
-//
-//                } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
-//                    // new push notification is received
-//                    String message = intent.getStringExtra("message");
-//                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
-//                    txtMessage.setText(message);
-//                }
-//            }
-//        };
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                // checking for type intent filter
+                if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {
+                    // gcm successfully registered
+                    // now subscribe to `global` topic to receive app wide notifications
+                    FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
+
+                } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
+                    // new push notification is received
+                    String message = intent.getStringExtra("message");
+                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+                    txtMessage.setText(message);
+                }
+            }
+        };
 
         mAdapter = new MessagesAdapter(this, messages, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -160,64 +160,64 @@ public class EmailListActivity extends AppCompatActivity implements SwipeRefresh
         }
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        // register GCM registration complete receiver
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-//                new IntentFilter(Config.REGISTRATION_COMPLETE));
-//
-//        // register new push message receiver
-//        // by doing this, the activity will be notified each time a new message arrives
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-//                new IntentFilter(Config.PUSH_NOTIFICATION));
-//
-//        // clear the notification area when the app is opened
-//        NotificationUtils.clearNotifications(getApplicationContext());
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
-//        super.onPause();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // register GCM registration complete receiver
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(Config.REGISTRATION_COMPLETE));
+
+        // register new push message receiver
+        // by doing this, the activity will be notified each time a new message arrives
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(Config.PUSH_NOTIFICATION));
+
+        // clear the notification area when the app is opened
+        NotificationUtils.clearNotifications(getApplicationContext());
+    }
+
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
+    }
 
 
-//    private void getInbox() {
-//        swipeRefreshLayout.setRefreshing(true);
-//
-//        ApiInterface apiService =
-//                ApiClient.getClient().create(ApiInterface.class);
-//
-//        Call<List<Message>> call = apiService.getInbox();
-//        call.enqueue(new Callback<List<Message>>() {
-//            @Override
-//            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
-//                // clear the inbox
-//                messages.clear();
-//
-//                // add all the messages
-//                // messages.addAll(response.body());
-//
-//                // TODO - avoid looping
-//                // the loop was performed to add colors to each message
-//                for (Message message : response.body()) {
-//                    // generate a random color
-//                    message.setColor(getRandomMaterialColor("400"));
-//                    messages.add(message);
-//                }
-//                mAdapter.notifyDataSetChanged();
-//                swipeRefreshLayout.setRefreshing(false);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Message>> call, Throwable t) {
-//                Toast.makeText(getApplicationContext(), "Unable to fetch json: " + t.getMessage(), Toast.LENGTH_LONG).show();
-//                swipeRefreshLayout.setRefreshing(false);
-//            }
-//        });
-//    }
+    private void getInbox() {
+        swipeRefreshLayout.setRefreshing(true);
+
+        ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+
+        Call<List<Message>> call = apiService.getInbox();
+        call.enqueue(new Callback<List<Message>>() {
+            @Override
+            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+                // clear the inbox
+                messages.clear();
+
+                // add all the messages
+                // messages.addAll(response.body());
+
+                // TODO - avoid looping
+                // the loop was performed to add colors to each message
+                for (Message message : response.body()) {
+                    // generate a random color
+                    message.setColor(getRandomMaterialColor("400"));
+                    messages.add(message);
+                }
+                mAdapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(Call<List<Message>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Unable to fetch json: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+    }
 
     private int getRandomMaterialColor(String typeColor) {
         int returnColor = Color.GRAY;
@@ -385,7 +385,7 @@ public class EmailListActivity extends AppCompatActivity implements SwipeRefresh
             messages.set(position, message);
             mAdapter.notifyDataSetChanged();
 
-            Toast.makeText(getApplicationContext(), "Read: " + message.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Read: " + message.getIssue(), Toast.LENGTH_SHORT).show();
         }
     }
 

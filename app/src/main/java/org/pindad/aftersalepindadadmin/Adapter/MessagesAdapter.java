@@ -46,18 +46,22 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     private static int currentSelectedIndex = -1;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
-        public TextView from, subject, message, iconText, timestamp;
+        public TextView from, subject, message, iconText;
+        public TextView id_ticket, issue, created_date, created_by, status, timeEmail;
         public ImageView iconImp, imgProfile;
         public LinearLayout messageContainer;
         public RelativeLayout iconContainer, iconBack, iconFront;
 
         public MyViewHolder(View view) {
             super(view);
-            from = (TextView) view.findViewById(R.id.from);
-            subject = (TextView) view.findViewById(R.id.txt_primary);
-            message = (TextView) view.findViewById(R.id.txt_secondary);
+            id_ticket = (TextView) view.findViewById(R.id.id_ticket);
+            issue = (TextView) view.findViewById(R.id.issue);
+            created_date = (TextView) view.findViewById(R.id.created_date);
+            created_by = (TextView) view.findViewById(R.id.created_by);
+            status = (TextView) view.findViewById(R.id.status);
+
+
             iconText = (TextView) view.findViewById(R.id.icon_text);
-            timestamp = (TextView) view.findViewById(R.id.timestamp);
             iconBack = (RelativeLayout) view.findViewById(R.id.icon_back);
             iconFront = (RelativeLayout) view.findViewById(R.id.icon_front);
             iconImp = (ImageView) view.findViewById(R.id.icon_star);
@@ -97,13 +101,16 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         Message message = messages.get(position);
 
         // displaying text view data
-        holder.from.setText(message.getFrom());
-        holder.subject.setText(message.getSubject());
-        holder.message.setText(message.getMessage());
-        holder.timestamp.setText(message.getTimestamp());
+        holder.id_ticket.setText(message.getId_ticket());
+        holder.issue.setText(message.getIssue());
+        holder.created_date.setText(message.getCreated_date());
+        holder.created_by.setText(message.getCreated_by());
+        holder.status.setText(message.getStatus());
+        holder.timeEmail.setText(message.getTimeEmail());
+
 
         // displaying the first letter of From in icon text
-        holder.iconText.setText(message.getFrom().substring(0, 1));
+        holder.iconText.setText(message.getCreated_by().substring(0, 1));
 
         // change the row state to activated
         holder.itemView.setActivated(selectedItems.get(position, false));
@@ -157,8 +164,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     }
 
     private void applyProfilePicture(MyViewHolder holder, Message message) {
-        if (!TextUtils.isEmpty(message.getPicture())) {
-            Glide.with(mContext).load(message.getPicture())
+        if (!TextUtils.isEmpty(message.getImage())) {
+            Glide.with(mContext).load(message.getImage())
                     .thumbnail(0.5f)
                     .crossFade()
                     .transform(new CircleTransform(mContext))
@@ -211,7 +218,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     @Override
     public long getItemId(int position) {
-        return messages.get(position).getId();
+        return messages.get(position).getId_ticket();
     }
 
     private void applyImportant(MyViewHolder holder, Message message) {

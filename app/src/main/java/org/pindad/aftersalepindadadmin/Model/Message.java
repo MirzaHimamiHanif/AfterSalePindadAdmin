@@ -6,57 +6,80 @@ package org.pindad.aftersalepindadadmin.Model;
 
 public class Message {
 
-    private int id;
-    private String from;
-    private String subject;
-    private String message;
-    private String timestamp;
-    private String picture;
+    private int id_ticket;
+    private String issue;
+    private String created_date;
+    private String created_by;
+    private String status;
+    private String timeEmail;
+
+    private String image;
     private boolean isImportant;
     private boolean isRead;
     private int color = -1;
 
+    public Message(String timestamp, String image, boolean isImportant, boolean isRead, int color, int id_ticket, String issue, String created_date, String created_by, String status, String timeEmail) {
+        this.image = image;
+        this.isImportant = isImportant;
+        this.isRead = isRead;
+        this.color = color;
+        this.id_ticket = id_ticket;
+        this.issue = issue;
+        this.created_date = created_date;
+        this.created_by = created_by;
+        this.status = status;
+        this.timeEmail = timeEmail;
+    }
+
     public Message() {
     }
 
-    public int getId() {
-        return id;
+    public int getId_ticket() {
+        return id_ticket;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_ticket(int id_ticket) {
+        this.id_ticket = id_ticket;
     }
 
-    public String getFrom() {
-        return from;
+    public String getIssue() {
+        return issue;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setIssue(String issue) {
+        this.issue = issue;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getCreated_date() {
+        return created_date;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setCreated_date(String created_date) {
+        this.created_date = created_date;
     }
 
-    public String getMessage() {
-        return message;
+    public String getCreated_by() {
+        return created_by;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getStatus() {
+        return status;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTimeEmail() {
+        return timeEmail;
+    }
+
+    public void setTimeEmail(String timeEmail) {
+        this.timeEmail = timeEmail;
     }
 
     public boolean isImportant() {
@@ -67,12 +90,12 @@ public class Message {
         isImportant = important;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImage() {
+        return image;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public boolean isRead() {

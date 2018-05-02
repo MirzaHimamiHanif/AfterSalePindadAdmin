@@ -13,23 +13,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/textUser"
+            android:id="@+id/created_by"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Username"
             android:layout_gravity="center_vertical"
             android:textStyle="bold"
-            android:textSize="25sp"
+            android:textSize="20sp"
             />
         <TextView
-            android:id="@+id/textEmail"
+            android:id="@+id/id_produk"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Email ini berisi bla bla ..."
+            android:text="Produk 1"
             android:layout_gravity="center_vertical"
-            android:textSize="16sp"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/issue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Issue"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Produk 1"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
             />
     </LinearLayout>
 
@@ -41,7 +55,7 @@
         android:paddingLeft="16dp">
 
         <TextView
-            android:id="@+id/textDate"
+            android:id="@+id/created_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Feb - 25"
